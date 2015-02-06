@@ -15,7 +15,8 @@ import java.util.logging.Logger;
 public class Connnector {	
     private String link;
     FTPFile[] list;
-    FTPClient client;        
+    FTPClient client;
+
     //Constructor without parametr
     public Connnector() {
         link = "ftp.mozilla.org";
@@ -39,7 +40,8 @@ public class Connnector {
 		e.printStackTrace();
             }
     }
-	
+
+    //method show information about files in folder
     public void FileInfo(){
         System.out.println("Files and dir on folder: ");
 	try {

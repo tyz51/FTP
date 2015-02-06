@@ -17,17 +17,17 @@ public class Connnector {
     FTPFile[] list;
     FTPClient client;
 
-    //Constructor without parametr
+    //Constructor without parameter
     public Connnector() {
         link = "ftp.mozilla.org";
     }
         
-    //Constructor whith parametr
+    //Constructor with parameter
     public Connnector(String link) {
         this.link = link;
     }
 	
-    //meth for connection
+    //Method for connection
     public void ftpConnect() throws FTPDataTransferException, FTPAbortedException, FTPListParseException{		
 	client = new FTPClient();		
 	try {
@@ -37,7 +37,8 @@ public class Connnector {
             System.out.println("Information about connection - "+ client);
             }
             catch (IllegalStateException | IOException | FTPIllegalReplyException| FTPException e) {
-		e.printStackTrace();
+            	e.printStackTrace();
+            	System.out.println("Some erorr!!!");
             }
     }
 
@@ -49,6 +50,7 @@ public class Connnector {
 	} 
         catch (IllegalStateException | IOException | FTPIllegalReplyException| FTPException | FTPDataTransferException | FTPAbortedException| FTPListParseException e) {
             e.printStackTrace();
+            System.out.println("Some erorr!!!");
         } 
 	for (FTPFile elem:list){
             if (elem.getType()==0){
@@ -74,17 +76,19 @@ public class Connnector {
         } 
         catch (IllegalStateException | IOException | FTPIllegalReplyException| FTPException e) {
             e.printStackTrace();
-	}
+            System.out.println("Some erorr!!!");
+        }
     }	
     public void fileDownloader(String filename){
 	try {
-            File myPath = new File("Download");
+            File myPath = new File("Download"); //Possible change folder name in future!!!
             myPath.mkdir();
             client.download(filename, new java.io.File(System.getProperty("user.dir")+"\\"+myPath+"\\"+filename));		
             }
         catch (IllegalStateException | IOException | FTPIllegalReplyException| FTPException | FTPDataTransferException | FTPAbortedException e) {
             e.printStackTrace();
-	}
+            System.out.println("Some erorr!!!");
+        }
     }
         
     public void disconect() throws FTPException, IllegalStateException, IOException, FTPIllegalReplyException{

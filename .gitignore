@@ -1,0 +1,7 @@
+bin/
+FTP/
+lib/
+target/
+FTPClient.iml
+.settings/
+.idea/
